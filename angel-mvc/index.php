@@ -20,7 +20,9 @@ try {
     $router->get('/registration-form', '\App\Controllers\RegistrationController@index');
     $router->post('/register', '\App\Controllers\RegistrationController@register');
 
-    $router->get('/login_form', '\App\Controllers\LoginController@index');
+    $router->get('/login-form', '\App\Controllers\LoginController@index');
+    $router->post('/login', '\App\Controllers\LoginController@register');
+
 
     // Run it!
     $router->run();
