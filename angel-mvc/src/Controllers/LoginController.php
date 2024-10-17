@@ -1,22 +1,21 @@
 <?php
-namespace Controllers;
+namespace App\Controllers;
 
-use Models\User;
+use App\Models\User;
+
 use Exception;
 
-class LoginController
+class LoginController extends BaseController
 {
-    private $userModel;
 
-    public function __construct(User $userModel)
-    {
-        $this->userModel = $userModel;
-    }
+    public function index() {
 
-    // GET /login-form
-    public function showLoginForm()
-    {
-        include __DIR__ . '/../views/login_form.php';
+        $template = 'login-form';
+
+
+        $output = $this->render($template);
+
+        return $output;
     }
 
     // POST /login
