@@ -76,7 +76,7 @@ class RegistrationController extends BaseController
             $save_result = $user->save($username, $email, $first_name, $last_name, $password);
 
             if ($save_result > 0) {
-                return $this->render('success'); // Registration success page
+                return $this->render('success'); 
             } else {
                 echo "Error during registration. Please try again.";
             }
