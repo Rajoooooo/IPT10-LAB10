@@ -20,8 +20,10 @@ try {
     $router->get('/registration-form', '\App\Controllers\RegistrationController@index');
     $router->post('/register', '\App\Controllers\RegistrationController@register');
 
-    $router->get('/login-form', '\App\Controllers\LoginController@index');
-    $router->post('/login', '\App\Controllers\LoginController@register');
+    $router->get('/login-form', '\App\Controllers\LoginController@showLoginForm');
+    $router->post('/login', '\App\Controllers\LoginController@login');
+    $router->get('/welcome', '\App\Controllers\HomeController@welcome');
+    $router->get('/logout', '\App\Controllers\LoginController@logout');
 
 
     // Run it!
