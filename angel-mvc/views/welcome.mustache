@@ -71,7 +71,6 @@
             border-bottom: 1px solid #ddd;
         }
 
-        /* Styled Logout Link as a Button */
         .logout-btn {
             margin-top: 20px;
             padding: 10px 25px;
@@ -81,17 +80,26 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            text-decoration: none; /* Remove underline */
+            text-decoration: none;
             display: inline-block;
         }
 
         .logout-btn:hover {
             background-color: #ff3333;
         }
+
+        .logout-message {
+            color: green;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        {{#logout_message}}
+            <div class="logout-message">{{logout_message}}</div>
+        {{/logout_message}}
+
         <h1>{{message}}</h1>
         <table>
             <thead>
@@ -112,8 +120,16 @@
             </tbody>
         </table>
 
-        <!-- Logout button styled as a link -->
-        <a href="/logout" class="logout-btn">Logout</a>
+        <a href="#" class="logout-btn" onclick="confirmLogout()">Logout</a>
     </div>
+
+    <script>
+        function confirmLogout() {
+            const confirmation = confirm("Are you sure you want to log out?");
+            if (confirmation) {
+                window.location.href = "/logout"; // Redirect to the logout URL
+            }
+        }
+    </script>
 </body>
 </html>
