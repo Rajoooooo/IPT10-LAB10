@@ -15,10 +15,13 @@ class LoginController extends BaseController {
             $_SESSION['login_attempts'] = 0;
         }
 
+        $attempts = $_SESSION['login_attempts'];
+        $form_disabled = $attempts >= 3;
+
         $data = [
-            'remaining_attempts' => 3 - $_SESSION['login_attempts'],
-            'form_disabled' => ($_SESSION['login_attempts'] >= 3),  // Disable form if attempts exceed 3
-            'timer' => ($_SESSION['login_attempts'] >= 3) ? 30 : null  // Example: 30 seconds timer if disabled
+            'remaining_attempts' => 3 - $attempts,
+            'form_disabled' => $form_disabled,
+            'timer' => ($form_disabled) ? 30 : null  // Set timer only if form is disabled
         ];
 
         return $this->render('login-form', $data);
